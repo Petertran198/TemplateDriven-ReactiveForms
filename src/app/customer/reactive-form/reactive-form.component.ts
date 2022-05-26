@@ -26,4 +26,15 @@ export class ReactiveFormComponent implements OnInit {
   save() {
     console.log(this.customerForm);
   }
+
+  populateTestData() {
+    //setValue is how we change all the value of that form
+    //while patchValue changes certain parts
+    this.customerForm.setValue({
+      firstName: "bob",
+      lastName: "bob",
+      email: "bob@gmail.com",
+      sendCatalog: false,
+    });
+  }
 }
