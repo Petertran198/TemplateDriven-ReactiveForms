@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Customer } from "../customer.model";
-import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+} from "@angular/forms";
 
 @Component({
   selector: "reactive-form",
@@ -24,10 +29,13 @@ export class ReactiveFormComponent implements OnInit {
     //   sendCatalog: new FormControl(true),
     // });
 
+    //This is how u set validators  and where u go to set custom ones
     this.customerForm = this.fb.group({
-      firstName: "",
-      lastName: "",
-      email: "",
+      firstName: ["", [Validators.required, Validators.minLength(3)]],
+      lastName: ["", [Validators.required, Validators.minLength(3)]],
+      email: ["", [Validators.required]],
+      phone: [""],
+      notification: ["email"],
       sendCatalog: true,
     });
   }
@@ -45,5 +53,19 @@ export class ReactiveFormComponent implements OnInit {
       email: "bob@gmail.com",
       sendCatalog: false,
     });
+  }
+
+  //Change validation on radio button change
+  setNotificationsRequired(notifcationType: string) {
+    const phoneControl = this.customerForm.get("phone");
+
+    if (notifcationType === "text") {
+      phoneControl.setValidators(Validators.required);
+    } else {
+      phoneControl.clearValidators();
+    }
+
+    //Reevaluate the input contol
+    phoneControl.updateValueAndValidity();
   }
 }

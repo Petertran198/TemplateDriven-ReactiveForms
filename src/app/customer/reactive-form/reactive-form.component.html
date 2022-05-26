@@ -17,8 +17,6 @@
             type="text"
             placeholder="First Name (required)"
             formControlName="firstName"
-            required
-            minlength="3"
             [ngClass]="{
               'is-invalid':
                 (customerForm.get('firstName').touched ||
@@ -48,8 +46,6 @@
             type="text"
             placeholder="Last Name (required)"
             formControlName="lastName"
-            required
-            maxlength="50"
             [ngClass]="{
               'is-invalid':
                 (customerForm.get('lastName').touched ||
@@ -76,7 +72,6 @@
             id="emailId"
             type="email"
             placeholder="Email (required)"
-            required
             formControlName="email"
             email
             [ngClass]="{
@@ -94,6 +89,58 @@
               Please enter a valid email address.
             </span>
           </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="phoneId">Phone</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="phoneId"
+            type="tel"
+            placeholder="Phone"
+            formControlName="phone"
+            email
+            [ngClass]="{
+              'is-invalid':
+                (customerForm.get('phone').touched ||
+                  customerForm.get('phone').dirty) &&
+                !customerForm.get('phone').valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="customerForm.get('phone').errors?.required">
+              Please enter your phone number.
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label pt-0">Notifications</label>
+        <div class="col-md-8">
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                value="email"
+                formControlName="notification"
+                (change)="setNotificationsRequired('email')"
+              />
+              Email
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="radio"
+                value="text"
+                formControlName="notification"
+                (change)="setNotificationsRequired('text')"
+              />Text
+            </label>
+          </div>
         </div>
       </div>
 
