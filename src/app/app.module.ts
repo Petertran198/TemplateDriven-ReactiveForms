@@ -4,9 +4,15 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CustomersComponent } from "./customer/customer.component";
-
+import { ReactiveFormComponent } from "./customer/reactive-form/reactive-form.component";
+import { TemplateDrivenFormComponent } from "./customer/template-form/template-driven-form.component";
 @NgModule({
-  declarations: [AppComponent, CustomersComponent],
+  declarations: [
+    AppComponent,
+    CustomersComponent,
+    ReactiveFormComponent,
+    TemplateDrivenFormComponent,
+  ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
