@@ -2,12 +2,15 @@
   <div class="card-header">Sign Up!</div>
 
   <div class="card-body"> </div> 
+  <!--#signupForm is a template reference to the form It contains is-valid, errors, formcontrols, etc-->
     <form novalidate (ngSubmit)="save(signupForm)" #signupForm="ngForm">
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label" for="firstNameId"
           >First Name
         </label>
         <div class="col-md-8">
+          <!--[(ngModel)] = is making the form two way binding -->
+          <!--#firstNameVar = is given us a template reference to the formcontrol object which allow us to have classed like .touched and .dirty below -->
           <input
             class="form-control"
             id="firstNameId"
@@ -15,7 +18,7 @@
             placeholder="First Name (required)"
             required
             minlength="3"
-            [(ngModel)]="customer.firstName"
+            [(ngModel)]="customer.firstName" 
             name="firstName"
             #firstNameVar="ngModel"
             [ngClass]="{
