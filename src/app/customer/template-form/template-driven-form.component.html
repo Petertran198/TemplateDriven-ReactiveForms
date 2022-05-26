@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card-header">Sign Up!</div>
 
-  <div class="card-body"> </div> 
-  <!--#signupForm is a template reference to the form It contains is-valid, errors, formcontrols, etc-->
+  <div class="card-body">
+    <!--#signupForm is a template reference to the form It contains is-valid, errors, formcontrols, etc-->
     <form novalidate (ngSubmit)="save(signupForm)" #signupForm="ngForm">
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label" for="firstNameId"
@@ -18,7 +18,7 @@
             placeholder="First Name (required)"
             required
             minlength="3"
-            [(ngModel)]="customer.firstName" 
+            [(ngModel)]="customer.firstName"
             name="firstName"
             #firstNameVar="ngModel"
             [ngClass]="{
